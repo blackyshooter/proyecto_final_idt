@@ -1,0 +1,25 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: self-hosted  # ← acá le decís que use tu runner
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Instalar dependencias server
+        run: cd server && npm install
+
+      - name: Instalar dependencias client
+        run: cd client && npm install
+
+      - name: Build client
+        run: cd client && npm run build
+
+      - name: Reiniciar app
+        run: pm2 restart app  # el nombre que le diste en PM2
