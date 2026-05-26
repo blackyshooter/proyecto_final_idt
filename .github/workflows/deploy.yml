@@ -22,4 +22,4 @@ jobs:
         run: cd cliente && npm run build
 
       - name: Reiniciar app
-        run: pm2 restart app  # el nombre que le diste en PM2
+        run: echo "App restart pendiente - en desarrollo"
